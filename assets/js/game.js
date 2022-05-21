@@ -36,9 +36,6 @@ var fight = function(enemy) {
       // if true, leave fight by breaking loop
       break;
     }
-      
-      // repeat and execute as long as the enemy-robot is alive 
-      fightOrSkip(); // <-- Replace code with this function call
   
       // generate random damage value based on player's attack power
       var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
@@ -151,27 +148,21 @@ var fight = function(enemy) {
   var shop = function() {
     // ask player what they'd like to do
     var shopOptionPrompt = window.prompt(
-      "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+      "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
     );
 
     // use switch to carry out action
+    shopOptionPrompt = parseInt(shopOptionPrompt);
     switch (shopOptionPrompt) {
-      
-      case "REFILL":
-      case "refill":
+      case 1:
         playerInfo.refillHealth();
         break;
-
-      case "UPGRADE":
-      case "upgrade":
+      case 2:
         playerInfo.upgradeAttack();
         break;
-
-      case "LEAVE": // new case
-      case "leave":
+      case 3:
         window.alert("Leaving the store.");
         break;
-
       default:
         window.alert("You did not pick a valid option. Try again.");
         shop();
